@@ -18,8 +18,8 @@ resource "aws_lambda_function" "aft_account_request_audit_trigger" {
   layers           = [var.aft_common_layer_arn]
 
   vpc_config {
-    subnet_ids         = tolist([aws_subnet.aft_vpc_private_subnet_01.id, aws_subnet.aft_vpc_private_subnet_02.id])
-    security_group_ids = tolist([aws_security_group.aft_vpc_default_sg.id])
+    subnet_ids         = local.aft_vpc_private_subnets
+    security_group_ids = local.aft_vpc_default_sg
   }
 
 }
@@ -61,8 +61,8 @@ resource "aws_lambda_function" "aft_account_request_action_trigger" {
   layers           = [var.aft_common_layer_arn]
 
   vpc_config {
-    subnet_ids         = tolist([aws_subnet.aft_vpc_private_subnet_01.id, aws_subnet.aft_vpc_private_subnet_02.id])
-    security_group_ids = tolist([aws_security_group.aft_vpc_default_sg.id])
+    subnet_ids         = local.aft_vpc_private_subnets
+    security_group_ids = local.aft_vpc_default_sg
   }
 
 }
@@ -98,8 +98,8 @@ resource "aws_lambda_function" "aft_controltower_event_logger" {
   layers           = [var.aft_common_layer_arn]
 
   vpc_config {
-    subnet_ids         = tolist([aws_subnet.aft_vpc_private_subnet_01.id, aws_subnet.aft_vpc_private_subnet_02.id])
-    security_group_ids = tolist([aws_security_group.aft_vpc_default_sg.id])
+    subnet_ids         = local.aft_vpc_private_subnets
+    security_group_ids = local.aft_vpc_default_sg
   }
 }
 
@@ -134,8 +134,8 @@ resource "aws_lambda_function" "aft_account_request_processor" {
   layers           = [var.aft_common_layer_arn]
 
   vpc_config {
-    subnet_ids         = tolist([aws_subnet.aft_vpc_private_subnet_01.id, aws_subnet.aft_vpc_private_subnet_02.id])
-    security_group_ids = tolist([aws_security_group.aft_vpc_default_sg.id])
+    subnet_ids         = local.aft_vpc_private_subnets
+    security_group_ids = local.aft_vpc_default_sg
   }
 
 }
@@ -171,8 +171,8 @@ resource "aws_lambda_function" "aft_invoke_aft_account_provisioning_framework" {
   layers           = [var.aft_common_layer_arn]
 
   vpc_config {
-    subnet_ids         = tolist([aws_subnet.aft_vpc_private_subnet_01.id, aws_subnet.aft_vpc_private_subnet_02.id])
-    security_group_ids = tolist([aws_security_group.aft_vpc_default_sg.id])
+    subnet_ids         = local.aft_vpc_private_subnets
+    security_group_ids = local.aft_vpc_default_sg
   }
 
 }

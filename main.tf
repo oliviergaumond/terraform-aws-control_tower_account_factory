@@ -35,12 +35,16 @@ module "aft_account_request_framework" {
   aft_account_provisioning_framework_sfn_name = local.aft_account_provisioning_framework_sfn_name
   aft_common_layer_arn                        = module.aft_lambda_layer.layer_version_arn
   cloudwatch_log_group_retention              = var.cloudwatch_log_group_retention
+  create_vpc                                  = var.create_vpc  
   aft_vpc_cidr                                = var.aft_vpc_cidr
   aft_vpc_private_subnet_01_cidr              = var.aft_vpc_private_subnet_01_cidr
   aft_vpc_private_subnet_02_cidr              = var.aft_vpc_private_subnet_02_cidr
   aft_vpc_public_subnet_01_cidr               = var.aft_vpc_public_subnet_01_cidr
   aft_vpc_public_subnet_02_cidr               = var.aft_vpc_public_subnet_02_cidr
   aft_vpc_endpoints                           = var.aft_vpc_endpoints
+  existing_vpc_id                             = var.existing_vpc_id
+  existing_vpc_subnets                        = var.existing_vpc_subnets
+  existing_vpc_sg                             = var.existing_vpc_sg
   request_framework_archive_path              = module.packaging.request_framework_archive_path
   request_framework_archive_hash              = module.packaging.request_framework_archive_hash
 }

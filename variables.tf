@@ -313,6 +313,16 @@ variable "terraform_api_endpoint" {
 # AFT VPC Variables
 #########################################
 
+variable "create_vpc" {
+  type        = bool
+  description = "Flag enabling creation of AFT VPC. If false, need to provide existing VPC"
+  default     = true
+  validation {
+    condition     = contains([true, false], var.create_vpc)
+    error_message = "Valid values for var: create_vpc are (true, false)."
+  }
+}
+
 variable "aft_vpc_cidr" {
   type        = string
   description = "CIDR Block to allocate to the AFT VPC"
@@ -361,4 +371,22 @@ variable "aft_vpc_public_subnet_02_cidr" {
     condition     = can(regex("^([0-9]{1,3}\\.){3}[0-9]{1,3}(\\/([0-9]|[1-2][0-9]|3[0-2]))?$", var.aft_vpc_public_subnet_02_cidr))
     error_message = "Variable var: aft_vpc_public_subnet_02_cidr value must be a valid network CIDR, x.x.x.x/y."
   }
+}
+
+variable "existing_vpc_id" {
+  type          = string
+  description   = "Id of exitsing VPC to deploy to"
+  default       = null
+}
+
+variable "existing_vpc_subnets" {
+  type          = list
+  description   = "List of existing subnets ids to deploy to"
+  default       = []
+}
+
+variable "existing_vpc_sg" {
+  type          = list
+  description   = "List of existing security groups to deploy to"
+  default       = []
 }

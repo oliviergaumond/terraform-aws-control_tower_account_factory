@@ -17,6 +17,10 @@ variable "aft_common_layer_arn" {
   type = string
 }
 
+variable "create_vpc" {
+  type = bool
+}
+
 variable "aft_vpc_cidr" {
   type = string
 }
@@ -47,4 +51,16 @@ variable "request_framework_archive_path" {
 
 variable "request_framework_archive_hash" {
   type = string
+}
+
+variable "existing_vpc_id" {
+  type          = string
+}
+
+variable "existing_vpc_subnets" {
+  type          = list
+}
+
+variable "existing_vpc_sg" {
+  type          = list
 }
